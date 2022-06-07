@@ -197,6 +197,7 @@ public class StringParserTest {
   @Test
   public void timestampTests() throws ParseException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     Map<String, java.util.Date> tests = ImmutableMap.of(
         "2001-07-04 12:08:56", dateFormat.parse("2001-07-04 12:08:56")
     );
@@ -223,7 +224,7 @@ public class StringParserTest {
   @Test
   public void timeTests() throws ParseException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
+    dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     Map<String, ?> tests = ImmutableMap.of(
         "12:08:56", dateFormat.parse("12:08:56")
     );

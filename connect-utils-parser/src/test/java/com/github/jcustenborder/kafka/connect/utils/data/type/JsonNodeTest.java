@@ -293,6 +293,7 @@ public class JsonNodeTest {
     //Timestamp
     java.util.Date expectedDate = new java.util.Date(1494855736000L);
     SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+    inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     of(tests, java.util.Date.class, Timestamp.SCHEMA, expectedDate);
     of(tests, java.util.Date.class, Timestamp.SCHEMA, inputFormat.format(expectedDate), expectedDate);
     of(tests, java.util.Date.class, Timestamp.SCHEMA, expectedDate.getTime(), expectedDate);
@@ -308,6 +309,7 @@ public class JsonNodeTest {
     //Time
     expectedDate = new java.util.Date(65336000L);
     inputFormat = new SimpleDateFormat("HH:mm:ss");
+    inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
     of(tests, java.util.Date.class, Time.SCHEMA, new java.util.Date(65336000L));
     of(tests, java.util.Date.class, Time.SCHEMA, inputFormat.format(expectedDate), expectedDate);
     of(tests, java.util.Date.class, Time.SCHEMA, expectedDate.getTime(), expectedDate);

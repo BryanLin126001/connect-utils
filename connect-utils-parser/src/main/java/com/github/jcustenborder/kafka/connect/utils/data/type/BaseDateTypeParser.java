@@ -43,7 +43,9 @@ public abstract class BaseDateTypeParser implements TypeParser {
     Date date = null;
     for (SimpleDateFormat dateFormat : this.dateFormats) {
       try {
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         date = dateFormat.parse(s);
+
         break;
       } catch (ParseException e) {
         if (log.isTraceEnabled()) {
